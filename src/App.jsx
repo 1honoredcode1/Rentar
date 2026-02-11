@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 import Home from "./pages/Home";
 import CarDetails from "./pages/CarDetails";
@@ -22,6 +23,7 @@ const App = () => {
         <Route path="/cars" element={<Cars />} />
         <Route path="/my-bookings" element={<MyBookings />} />
       </Routes>
+      {!isOwnerPath && <Footer />}
     </>
   );
 };

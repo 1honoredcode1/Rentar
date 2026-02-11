@@ -1,8 +1,8 @@
-import Banner from "../components/Banner";
-import FeaturedSection from "../components/FeaturedSection";
-import Hero from "../components/Hero";
-import Newsletter from "../components/Newsletter";
-import Testimonial from "../components/Testimonial";
+import Hero from "../components/home/Hero";
+import FeaturedSection from "../components/home/FeaturedSection";
+import Banner from "../components/home/Banner";
+import Testimonial from "../components/home/Testimonial";
+import Newsletter from "../components/home/Newsletter";
 
 const Home = () => {
   return (

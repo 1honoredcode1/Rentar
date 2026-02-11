@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { assets, cityList } from "../assets/assets";
+import { assets, cityList } from "../../assets/assets";
 
 const Hero = () => {
   const [pickupLocation, setPickupLocation] = useState(false);

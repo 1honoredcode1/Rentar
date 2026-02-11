@@ -1,10 +1,10 @@
 import { useNavigate } from "react-router-dom";
 
-import { assets, dummyCarData } from "../assets/assets";
+import { assets, dummyCarData } from "../../assets/assets";
 
 import CarCard from "./CarCard";
 
-import Title from "./Title";
+import Title from "../extra/Title";
 
 const FeaturedSection = () => {
   const navigate = useNavigate();

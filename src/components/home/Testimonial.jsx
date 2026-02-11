@@ -1,6 +1,6 @@
-import { assets } from "../assets/assets";
+import { assets } from "../../assets/assets";
 
-import Title from "./Title";
+import Title from "../extra/Title";
 
 const Testimonial = () => {
   const testimonials = [
