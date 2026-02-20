@@ -41,7 +41,7 @@ const Navbar = ({ setShowLogin }) => {
           <img src={assets.search_icon} alt="search-icon" />
         </div>
         <div className="flex max-sm:flex-col items-start sm:items-center gap-6">
-          <button className="cursor-pointer" onClick={() => navigate("/owner")}>
+          <button className="cursor-pointer" onClick={() => navigate("/admin")}>
             Dashboard
           </button>
           <button
