@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
 
-import { assets, dummyUserData } from "../../assets/assets";
+import { assets } from "../../assets/assets";
+
+import { useAppContext } from "../../context/AppContext";
 
 const NavbarAdmin = () => {
-  const user = dummyUserData;
+  const { user } = useAppContext();
 
   return (
     <div
@@ -14,7 +16,7 @@ const NavbarAdmin = () => {
         <img src={assets.logo} alt="logo" className="h-8" />
         <h1 className="text-xl font-semibold">oRentar</h1>
       </Link>
-      <p className="">Welcome {user.name || "Admin"}</p>
+      <p className="">Welcome {user?.name || "Admin"}</p>
     </div>
   );
 };
