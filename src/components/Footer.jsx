@@ -1,19 +1,41 @@
+import { motion } from "motion/react";
+
 import { assets } from "../assets/assets";
 
 const Footer = () => {
   return (
-    <div className="px-6 md:px-16 lg:px-24 xl:px-32 mt-60 text-sm text-gray-500 ">
-      <div className="flex flex-wrap justify-between items-start gap-8 pb-6 border-borderColor border-b">
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      className="px-6 md:px-16 lg:px-24 xl:px-32 mt-60 text-sm text-gray-500 "
+    >
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        className="flex flex-wrap justify-between items-start gap-8 pb-6 border-borderColor border-b"
+      >
         <div>
           <div className="flex items-center">
             <img src={assets.logo} alt="logo" className="h-8" />
             <h1 className="text-xl font-semibold">oRentar</h1>
           </div>
-          <p className="max-w-80 mt-3">
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="max-w-80 mt-3"
+          >
             Discover unique stays and unforgettable experiences with our
             platform. Book your next adventure today!
-          </p>
-          <div className="flex items-center gap-3 mt-6">
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+            className="flex items-center gap-3 mt-6"
+          >
             <a href="#">
               <img
                 src={assets.facebook_logo}
@@ -42,10 +64,14 @@ const Footer = () => {
                 className="w-5 h-5"
               />{" "}
             </a>
-          </div>
+          </motion.div>
         </div>
 
-        <div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+        >
           <h2 className="text-base font-medium text-gray-800 uppercase">
             GoRentar
           </h2>
@@ -63,8 +89,12 @@ const Footer = () => {
               <a href="#">About Us</a>
             </li>
           </ul>
-        </div>
-        <div>
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+        >
           <h2 className="text-base font-medium text-gray-800 uppercase">
             Resources
           </h2>
@@ -82,8 +112,12 @@ const Footer = () => {
               <a href="#">Insurance</a>
             </li>
           </ul>
-        </div>
-        <div>
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.5 }}
+        >
           <h2 className="text-base font-medium text-gray-800 uppercase">
             Contact
           </h2>
@@ -93,10 +127,15 @@ const Footer = () => {
             <li>+47 123 45 678</li>
             <li>gorentar@gmail.com</li>
           </ul>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
 
-      <div className="flex flex-col md:flex-row gap-2 items-center justify-between py-5">
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.6 }}
+        className="flex flex-col md:flex-row gap-2 items-center justify-between py-5"
+      >
         <p>© {new Date().getFullYear()} GORentar. All rights reserved.</p>
         <ul className="flex gap-4 items-center">
           <li>
@@ -111,8 +150,8 @@ const Footer = () => {
             <a href="#">Cookies</a>
           </li>
         </ul>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 };
 

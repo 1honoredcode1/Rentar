@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { motion } from "motion/react";
 
 import { assets } from "../../assets/assets";
 
@@ -13,21 +14,44 @@ const FeaturedSection = () => {
   const { cars } = useAppContext();
 
   return (
-    <div className="flex flex-col items-center py-24 px-6 md:px-16 lg:px-24 xl:px-32">
-      <div className="">
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1, ease: "easeOut" }}
+      className="flex flex-col items-center py-24 px-6 md:px-16 lg:px-24 xl:px-32"
+    >
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, delay: 0.5 }}
+        className=""
+      >
         <Title
           title="Featured Vehicles"
           subtitle="Explore our amazing vehicle choices and choose the one for you!"
         />{" "}
-      </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-18">
+      </motion.div>
+      <motion.div
+        initial={{ opacity: 0, y: 100 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, delay: 0.5 }}
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-18"
+      >
         {cars.slice(0, 6).map((car) => (
-          <div key={car._id}>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            key={car._id}
+          >
             <CarCard car={car} />
-          </div>
+          </motion.div>
         ))}
-      </div>
-      <button
+      </motion.div>
+      <motion.button
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4, delay: 0.6 }}
         onClick={() => {
           navigate("/cars");
           scrollTo(0, 0);
@@ -37,8 +61,8 @@ const FeaturedSection = () => {
       >
         Explore All Cars
         <img src={assets.arrow_icon} alt="arrow" />
-      </button>
-    </div>
+      </motion.button>
+    </motion.div>
   );
 };
 
