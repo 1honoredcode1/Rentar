@@ -22,7 +22,7 @@ const Sidebar = () => {
         toast.error(data.message);
       }
     } catch (error) {
-      toast.error(data.error);
+      toast.error(error.message);
     }
   };
   const location = useLocation();

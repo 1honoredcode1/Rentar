@@ -1,10 +1,14 @@
 import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
-import { assets, dummyDashboardData } from "../../assets/assets";
+import { assets } from "../../assets/assets";
+
 import Title from "../../components/admin/Title";
 
+import { useAppContext } from "../../context/AppContext";
+
 const Dashboard = () => {
-  const currency = import.meta.env.VITE_CURRENCY;
+  const { axios, isAdmin, currency } = useAppContext();
 
   const [data, setData] = useState({
     totalCars: 0,
@@ -34,9 +38,24 @@ const Dashboard = () => {
     },
   ];
 
+  const fetchDashboardData = async () => {
+    try {
+      const { data } = await axios.get("/api/admin/dashboard");
+      if (data.success) {
+        setData(data.dashboardData);
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
+
   useEffect(() => {
-    setData(dummyDashboardData);
-  }, []);
+    if (isAdmin) {
+      fetchDashboardData();
+    }
+  }, [isAdmin]);
 
   return (
     <div className="px-4 pt-10 md:px-10 flex-1">

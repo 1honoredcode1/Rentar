@@ -1,12 +1,16 @@
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 import Title from "../../components/admin/Title";
 
 import { assets } from "../../assets/assets";
 
-const AddCar = () => {
-  const currency = import.meta.env.VITE_CURRENCY;
+import { useAppContext } from "../../context/AppContext";
 
+const AddCar = () => {
+  const { axios, currency } = useAppContext();
+
+  const [isLoading, setIsLoading] = useState(false);
   const [image, setImage] = useState(null);
   const [car, setCar] = useState({
     brand: "",
@@ -23,6 +27,36 @@ const AddCar = () => {
 
   const onSubmitHandler = async (e) => {
     e.preventDefault();
+    if (isLoading) return null;
+    setIsLoading(true);
+    try {
+      const formData = new FormData();
+      formData.append("image", image);
+      formData.append("carData", JSON.stringify(car));
+      const { data } = await axios.post("/api/admin/add-car", formData);
+      if (data.success) {
+        toast.success(data.message);
+        setImage(null);
+        setCar({
+          brand: "",
+          model: "",
+          year: 0,
+          pricePerDay: 0,
+          category: "",
+          transmission: "",
+          fuel_type: "",
+          seating_capacity: 0,
+          description: "",
+          location: "",
+        });
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      toast.error(error.message);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -106,9 +140,9 @@ const AddCar = () => {
               className="px-3 py-2 mt-1 border border-borderColor rounded-md outline-none"
             >
               <option value="">Select a category</option>
-              <option value="">Sedan</option>
-              <option value="">SUV</option>
-              <option value="">Van</option>
+              <option value="Sedan">Sedan</option>
+              <option value="SUV">SUV</option>
+              <option value="Van">Van</option>
             </select>
           </div>
         </div>
@@ -181,7 +215,7 @@ const AddCar = () => {
         </div>
         <button className="flex items-center gap-2 px-4 py-2.5 mt-4 bg-primary text-white rounded-md font-medium w-max cursor-pointer">
           <img src={assets.tick_icon} alt="tick" />
-          List Your Car
+          {isLoading ? "Listing..." : "List Your Car"}
         </button>
       </form>
     </div>
